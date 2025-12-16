@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Digitalist</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Inter, sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    h1 {
+      font-family: Playfair Display, serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    article p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="title"></h1>
+    <div class="meta" id="tag"></div>
+
+    <article id="content"></article>
+
+    <a href="index.html" class="back">← Back</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+
+    fetch(`articles/${slug}.json`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('title').textContent = data.title;
+        document.getElementById('tag').textContent = data.tag;
+        document.getElementById('content').innerHTML = data.content;
+      });
+  </script>
+
+</body>
+</html>
