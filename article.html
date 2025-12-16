@@ -42,12 +42,35 @@
     }
 
     a.back {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-top: 4rem;
+      padding: 0.75rem 1.5rem;
       font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      opacity: 0.6;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    a.back:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    a.back:visited {
+      color: #fff;
+    }
+    
+    a.back::before {
+      content: "←";
+      margin-right: 0.5rem;
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -59,7 +82,7 @@
 
     <article id="content"></article>
 
-    <a href="index.html" class="back">← Back</a>
+    <a href="index.html" class="back">Back</a>
   </div>
 
   <script>
