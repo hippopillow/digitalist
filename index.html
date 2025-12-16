@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Digitalist</title>
+  
+  <!-- Cache control headers -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -204,7 +209,7 @@
   <header>
     <div class="container hero-grid">
       <div class="reveal">
-        <h1 class="logo">The Digitalist</h1>
+        <h1 class="logo" data-value="THE DIGITALIST">THE DIGITALIST</h1>
         <p class="tagline">Explaining tomorrow, today.</p>
         <a href="#articles" class="cta">Read the Future</a>
       </div>
@@ -242,6 +247,40 @@
     reveals.forEach(el => observer.observe(el));
   </script>
 
+  <!-- GLITCH EFFECT SCRIPT -->
+  <script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    function applyGlitchEffect(element) {
+      let iteration = 0;
+      
+      const interval = setInterval(() => {
+        element.innerText = element.innerText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return element.dataset.value[index];
+            }
+          
+            return letters[Math.floor(Math.random() * 26)]
+          })
+          .join("");
+        
+        if(iteration >= element.dataset.value.length){ 
+          clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    }
+    
+    // Apply the glitch effect on page load
+    window.addEventListener('load', () => {
+      const logo = document.querySelector('.logo');
+      applyGlitchEffect(logo);
+    });
+  </script>
+
   <!-- INFINITE FEED SCRIPT -->
   <script>
     let page = 0;
@@ -253,7 +292,9 @@
       page++;
 
       try {
-        const res = await fetch(`articles/page-${page}.json`);
+        // Add cache-busting parameter with timestamp
+        const timestamp = new Date().getTime();
+        const res = await fetch(`articles/page-${page}.json?t=${timestamp}`);
         if (!res.ok) return;
         const articles = await res.json();
 
