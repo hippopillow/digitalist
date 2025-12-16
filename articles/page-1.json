@@ -1,5 +1,8 @@
-{
-  "title": "Test Article",
-  "tag": "Test",
-  "content": "<p>This is a test.</p>"
-}
+[
+  {
+    "slug": "test-article",
+    "title": "Test Article",
+    "excerpt": "This is a test.",
+    "tag": "Test"
+  }
+]
