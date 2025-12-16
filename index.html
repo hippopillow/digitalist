@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Digitalist</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #9a9a9a;
+      --line: rgba(255,255,255,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- GLOBAL ---------- */
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 4rem 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s cubic-bezier(.19,1,.22,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- HERO ---------- */
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .cta::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      background: var(--fg);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .cta:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* ---------- ARTICLES ---------- */
+
+    section.articles {
+      padding: 6rem 0 8rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+    }
+
+    .article {
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      transition: opacity 0.4s ease;
+    }
+
+    .article:hover {
+      opacity: 0.7;
+    }
+
+    .article h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .article p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .article span {
+      display: block;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 4rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 2rem;
+    }
+
+    /* ---------- MEDIA ---------- */
+
+    @media (max-width: 768px) {
+      header {
+        padding-top: 6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="container hero-grid">
+      <div class="reveal">
+        <h1 class="logo">The Digitalist</h1>
+        <p class="tagline">Explaining tomorrow, today.</p>
+        <a href="#articles" class="cta">Read the Future</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLES -->
+  <section id="articles" class="articles">
+    <div class="container">
+      <div class="section-title reveal">Latest Articles</div>
+
+      <div class="article-grid">
+        <article class="article reveal">
+          <h3>The Quiet Architecture of AI Systems</h3>
+          <p>Why the most powerful technologies are designed to disappear into the background.</p>
+          <span>Artificial Intelligence</span>
+        </article>
+
+        <article class="article reveal">
+          <h3>Digital Culture After the Feed</h3>
+          <p>The slow collapse of infinite scroll and what replaces algorithmic attention.</p>
+          <span>Culture</span>
+        </article>
+
+        <article class="article reveal">
+          <h3>Software as Power</h3>
+          <p>How interfaces quietly shape behavior, politics, and society.</p>
+          <span>Technology & Society</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div>© 2025 The Digitalist</div>
+      <div>Independent Digital Publication</div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- INFINITE FEED SCRIPT -->
+  <script>
+    let page = 0;
+    let loading = false;
+
+    async function loadArticles() {
+      if (loading) return;
+      loading = true;
+      page++;
+
+      try {
+        const res = await fetch(`articles/page-${page}.json`);
+        if (!res.ok) return;
+        const articles = await res.json();
+
+        const grid = document.querySelector('.article-grid');
+
+        articles.forEach(a => {
+          const el = document.createElement('article');
+          el.className = 'article reveal visible';
+          el.innerHTML = `
+            <a href="article.html?slug=${a.slug}">
+              <h3>${a.title}</h3>
+              <p>${a.excerpt}</p>
+              <span>${a.tag}</span>
+            </a>
+          `;
+          grid.appendChild(el);
+        });
+      } finally {
+        loading = false;
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+        loadArticles();
+      }
+    });
+
+    loadArticles();
+  </script>
+</body>
+</html>
