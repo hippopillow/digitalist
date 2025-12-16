@@ -1,8 +1,6 @@
-[
-  {
-    "slug": "test-article",
-    "title": "Test Article",
-    "excerpt": "This is a test.",
-    "tag": "Test"
-  }
-]
+{
+  "slug": "the-death-of-the-cookie",
+  "title": "The Death of the Cookie: Why the End of the Internet's Tiny Tracker is a New Beginning",
+  "excerpt": "The third-party cookie, the silent engine of the ad-supported internet, is finally crumbling. This isn't an apocalypse; it's a necessary evolution towards a more private, user-centric web. Here's what you need to know about the post-cookie future.",
+  "tag": "Privacy & Advertising"
+}
